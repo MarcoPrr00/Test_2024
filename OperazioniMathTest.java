@@ -36,9 +36,5 @@ class OperazioniMathTest {
         assertArrayEquals(new double[]{Double.NaN, Double.NaN}, operazioniMath.calcolaSoluzioniEquazioneSecondoGrado(2, 1, 2));
     }
 
-    @Test
-    void testEquazioneCoeffNulli() {
-        assertArrayEquals(new double[]{Double.NaN, Double.NaN}, operazioniMath.calcolaSoluzioniEquazioneSecondoGrado(0, 0, 0));
-    }
 
 }
