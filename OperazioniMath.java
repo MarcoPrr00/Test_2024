@@ -48,8 +48,12 @@ public class OperazioniMath {
     }
 
     public double[] calcolaSoluzioniEquazioneSecondoGrado(double a, double b, double c) {
-        double delta = b * b - 4 * a * c;
         double[] soluzioni = new double[2];
+        if (a==0){
+            return null;
+        }
+        double delta = b * b - 4 * a * c;
+
 
         if (delta > 0) {
             // Due soluzioni reali

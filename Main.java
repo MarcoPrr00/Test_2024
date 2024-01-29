@@ -14,7 +14,7 @@ public class Main {
         int baseDestinazione = scanner.nextInt();
         String numeroConvertito = conversione.convertiBase(numeroDecimale, baseDestinazione);
         if (numeroConvertito.equals("")) {
-            numeroConvertito="numero negativo";
+            numeroConvertito="numero inserito <= 0";
         }
         System.out.println("Il numero convertito è: " + numeroConvertito);
 
@@ -28,7 +28,9 @@ public class Main {
         System.out.println("Inserire il termine noto: (c)");
         double c=scanner.nextDouble();
         double[] soluzioni = conversione.calcolaSoluzioniEquazioneSecondoGrado(a, b, c);
-        if (!Double.isNaN(soluzioni[0])) {
+        if(soluzioni==null){
+            System.out.println("a minore di zero impossibile eseguire i calcoli");
+        }else if (!Double.isNaN(soluzioni[0])) {
             if (soluzioni[0] == soluzioni[1]) {
                 System.out.println("L'equazione ha una sola soluzione: " + soluzioni[0]);
             } else {
