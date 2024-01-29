@@ -71,5 +71,16 @@ class OperazioniMathTest {
         assertArrayEquals(new double[]{3.0, 2.0},operazioniMath.calcolaSoluzioniEquazioneSecondoGrado(1, -5, 6));
     }
 
+    //step 7 aggiunta per esperienza e per migliorare
+    @Test
+    public void testSoluzioniZero() {
+        assertArrayEquals(new double[] { 0.0, 0.0 }, operazioniMath.calcolaSoluzioniEquazioneSecondoGrado(1, 0, 0), 0.001);
+    }
+
+    @Test
+    public void testDeltaQuadratoPerfetto() {
+        assertArrayEquals(new double[] { 1.0, -1.0 }, operazioniMath.calcolaSoluzioniEquazioneSecondoGrado(1, 0, -1), 0.001);
+    }
+
 
 }
