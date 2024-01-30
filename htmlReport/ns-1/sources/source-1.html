@@ -1,0 +1,148 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > Main</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">&lt;empty package name&gt;</a>
+</div>
+
+<h1>Coverage Summary for Class: Main (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Main</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    81,5%
+  </span>
+  <span class="absValue">
+    (22/27)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;import java.util.Scanner;
+&nbsp;
+<b class="nc">&nbsp;public class Main {</b>
+&nbsp;
+&nbsp;    public static void main(String[] args) {
+<b class="fc">&nbsp;        Scanner scanner = new Scanner(System.in);</b>
+<b class="fc">&nbsp;        OperazioniMath conversione = new OperazioniMath();</b>
+&nbsp;
+<b class="fc">&nbsp;        System.out.println(&quot;CONVERSIONE DI NUMERO:&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;        System.out.println(&quot;Inserisci il numero decimale da convertire: (numero positivo)&quot;);</b>
+<b class="fc">&nbsp;        int numeroDecimale = scanner.nextInt();</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Inserisci la base di destinazione (2 per binario, 8 per ottale, 16 per esadecimale): &quot;);</b>
+<b class="fc">&nbsp;        int baseDestinazione = scanner.nextInt();</b>
+<b class="fc">&nbsp;        String numeroConvertito = conversione.convertiBase(numeroDecimale, baseDestinazione);</b>
+<b class="fc">&nbsp;        if (numeroConvertito.equals(&quot;&quot;)) {</b>
+<b class="nc">&nbsp;            numeroConvertito=&quot;numero inserito &lt;= 0&quot;;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        System.out.println(&quot;Il numero convertito è: &quot; + numeroConvertito);</b>
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;        System.out.println(&quot;\nSOLUZIONI EQUAZIONE DI SECONDO GRADO:&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;        System.out.println(&quot;Inserire il coefficiente di X^2: (a)&quot;);</b>
+<b class="fc">&nbsp;        double a=scanner.nextDouble();</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Inserire il coefficiente di X: (b)&quot;);</b>
+<b class="fc">&nbsp;        double b=scanner.nextDouble();</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Inserire il termine noto: (c)&quot;);</b>
+<b class="fc">&nbsp;        double c=scanner.nextDouble();</b>
+<b class="fc">&nbsp;        double[] soluzioni = conversione.calcolaSoluzioniEquazioneSecondoGrado(a, b, c);</b>
+<b class="fc">&nbsp;        if(soluzioni==null){</b>
+<b class="nc">&nbsp;            System.out.println(&quot;a minore di zero impossibile eseguire i calcoli&quot;);</b>
+<b class="fc">&nbsp;        }else if (!Double.isNaN(soluzioni[0])) {</b>
+<b class="fc">&nbsp;            if (soluzioni[0] == soluzioni[1]) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;L&#39;equazione ha una sola soluzione: &quot; + soluzioni[0]);</b>
+&nbsp;            } else {
+<b class="fc">&nbsp;                System.out.println(&quot;Le soluzioni dell&#39;equazione sono: &quot; + soluzioni[0] + &quot; e &quot; + soluzioni[1]);</b>
+&nbsp;            }
+&nbsp;        } else {
+<b class="nc">&nbsp;            System.out.println(&quot;L&#39;equazione non ha soluzioni reali.&quot;);</b>
+&nbsp;        }
+&nbsp;
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-30 19:45</div>
+</div>
+</body>
+</html>

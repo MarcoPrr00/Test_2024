@@ -1,0 +1,180 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > OperazioniMath</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">&lt;empty package name&gt;</a>
+</div>
+
+<h1>Coverage Summary for Class: OperazioniMath (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">OperazioniMath</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (41/41)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode"><b class="fc">&nbsp;public class OperazioniMath {</b>
+&nbsp;
+&nbsp;    // Metodo per la conversione della base (basi ammissibili 2, 8, 16; altrimenti restituisce una stringa di errore)
+&nbsp;    public String convertiBase(int numeroDecimale, int baseDestinazione) {
+<b class="fc">&nbsp;        switch (baseDestinazione) {</b>
+&nbsp;            case 2:
+<b class="fc">&nbsp;                return convertiBinario(numeroDecimale);</b>
+&nbsp;            case 8:
+<b class="fc">&nbsp;                return convertiOttale(numeroDecimale);</b>
+&nbsp;            case 16:
+<b class="fc">&nbsp;                return convertiEsadecimale(numeroDecimale);</b>
+&nbsp;            default:
+<b class="fc">&nbsp;                return &quot;Base di destinazione non supportata&quot;;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    // Metodo per la conversione in binario (se il numero è minore di zero restituiremo una stringa vuota)
+&nbsp;    private String convertiBinario(int numeroDecimale) {
+<b class="fc">&nbsp;        StringBuilder risultato = new StringBuilder();</b>
+<b class="fc">&nbsp;        while (numeroDecimale &gt; 0) {</b>
+<b class="fc">&nbsp;            int resto = numeroDecimale % 2;</b>
+<b class="fc">&nbsp;            risultato.insert(0, resto);</b>
+<b class="fc">&nbsp;            numeroDecimale /= 2;</b>
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        return risultato.toString();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // Metodo per la conversione in ottale (se il numero è minore di zero restituiremo una stringa vuota)
+&nbsp;    private String convertiOttale(int numeroDecimale) {
+<b class="fc">&nbsp;        StringBuilder risultato = new StringBuilder();</b>
+<b class="fc">&nbsp;        while (numeroDecimale &gt; 0) {</b>
+<b class="fc">&nbsp;            int resto = numeroDecimale % 8;</b>
+<b class="fc">&nbsp;            risultato.insert(0, resto);</b>
+<b class="fc">&nbsp;            numeroDecimale /= 8;</b>
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        return risultato.toString();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // Metodo per la conversione in esadecimale (se il numero è minore di zero restituiremo una stringa vuota)
+&nbsp;    private String convertiEsadecimale(int numeroDecimale) {
+<b class="fc">&nbsp;        StringBuilder risultato = new StringBuilder();</b>
+<b class="fc">&nbsp;        while (numeroDecimale &gt; 0) {</b>
+<b class="fc">&nbsp;            int resto = numeroDecimale % 16;</b>
+<b class="fc">&nbsp;            risultato.insert(0, Integer.toHexString(resto).toUpperCase());</b>
+<b class="fc">&nbsp;            numeroDecimale /= 16;</b>
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        return risultato.toString();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double[] calcolaSoluzioniEquazioneSecondoGrado(double a, double b, double c) {
+<b class="fc">&nbsp;        double[] soluzioni = new double[2];</b>
+<b class="fc">&nbsp;        if (a==0){</b>
+<b class="fc">&nbsp;            return null;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        double delta = b * b - 4 * a * c;</b>
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;        if (delta &gt; 0) {</b>
+&nbsp;            // Due soluzioni reali
+<b class="fc">&nbsp;            double radiceDelta = Math.sqrt(delta);</b>
+<b class="fc">&nbsp;            soluzioni[0] = (-b + radiceDelta) / (2 * a);</b>
+<b class="fc">&nbsp;            soluzioni[1] = (-b - radiceDelta) / (2 * a);</b>
+<b class="fc">&nbsp;        } else if (delta == 0) {</b>
+&nbsp;            // Una soluzione reale (delta uguale a zero)
+<b class="fc">&nbsp;            soluzioni[0] = -b / (2 * a);</b>
+<b class="fc">&nbsp;            soluzioni[1] = soluzioni[0]; // La stessa soluzione in entrambi i casi</b>
+&nbsp;        } else {
+&nbsp;            // Nessuna soluzione reale (delta negativo)
+<b class="fc">&nbsp;            soluzioni[0] = Double.NaN;</b>
+<b class="fc">&nbsp;            soluzioni[1] = Double.NaN;</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        return soluzioni;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-30 19:45</div>
+</div>
+</body>
+</html>

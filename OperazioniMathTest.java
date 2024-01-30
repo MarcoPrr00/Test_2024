@@ -71,15 +71,36 @@ class OperazioniMathTest {
         assertArrayEquals(new double[]{3.0, 2.0},operazioniMath.calcolaSoluzioniEquazioneSecondoGrado(1, -5, 6));
     }
 
-    //step 7 aggiunta per esperienza e per migliorare
+    //Test aggiuntivi
+    @Test
+    public void testNumeroDecimaleNegativo(){
+        assertEquals("",operazioniMath.convertiBase(-1,2));
+    }
+    @Test
+    public void testMaxNumeroDecimiale(){
+        assertEquals("1111111111111111111111111111111",operazioniMath.convertiBase(Integer.MAX_VALUE,2));
+    }
+    @Test
+    public void testMinNumeroDecimale(){
+        assertEquals("",operazioniMath.convertiBase(Integer.MIN_VALUE,2));
+    }
     @Test
     public void testSoluzioniZero() {
-        assertArrayEquals(new double[] { 0.0, 0.0 }, operazioniMath.calcolaSoluzioniEquazioneSecondoGrado(1, 0, 0), 0.001);
+        assertArrayEquals(new double[] { 0.0, 0.0 }, operazioniMath.calcolaSoluzioniEquazioneSecondoGrado(1, 0, 0),0.0001);
     }
 
     @Test
     public void testDeltaQuadratoPerfetto() {
-        assertArrayEquals(new double[] { 1.0, -1.0 }, operazioniMath.calcolaSoluzioniEquazioneSecondoGrado(1, 0, -1), 0.001);
+        assertArrayEquals(new double[] { 1.0, -1.0 }, operazioniMath.calcolaSoluzioniEquazioneSecondoGrado(1, 0, -1));
+    }
+
+    @Test
+    public void testCoefficientiZero(){
+        assertNull(operazioniMath.calcolaSoluzioniEquazioneSecondoGrado(0,0,0));
+    }
+    @Test
+    public void testCoefficientiMaxMin(){
+        assertArrayEquals(new double[]{0.6180339887498949,-1.618033988749895},operazioniMath.calcolaSoluzioniEquazioneSecondoGrado(1000000000,1000000000,-1000000000));
     }
 
 
