@@ -103,5 +103,12 @@ class OperazioniMathTest {
         assertArrayEquals(new double[]{0.6180339887498949,-1.618033988749895},operazioniMath.calcolaSoluzioniEquazioneSecondoGrado(1000000000,1000000000,-1000000000));
     }
 
+    @Test
+    public void testCoefficientiSuperioriInferioriSogliaMaxSogliaMin()
+    {
+        assertThrows(ArithmeticException.class,() ->{
+            operazioniMath.calcolaSoluzioniEquazioneSecondoGrado(-1000000001,1000000001,1000000001);
+        });
+    }
 
 }

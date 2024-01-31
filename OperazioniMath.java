@@ -49,10 +49,13 @@ public class OperazioniMath {
 
     public double[] calcolaSoluzioniEquazioneSecondoGrado(double a, double b, double c) {
         double[] soluzioni = new double[2];
+        double sogliaMax = 1000000000;
+        double sogliaMin = -1000000000;
         if (a==0){
             return null;
         }
-        if (a>1000000000||b>1000000000||c>1000000000||a<-1000000000||b<-1000000000||c<-1000000000){
+        // Se uno tra i tre coefficienti dovesse risultare maggiore di sogliaMax o minore di sogliaMin allora lancia l'eccezione
+        if (a>sogliaMax||b>sogliaMax||c>sogliaMax||a<sogliaMin||b<sogliaMin||c<sogliaMin){
             throw new ArithmeticException();
         }
         double delta = b * b - 4 * a * c;
