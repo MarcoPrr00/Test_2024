@@ -27,17 +27,21 @@ public class Main {
         double b=scanner.nextDouble();
         System.out.println("Inserire il termine noto: (c)");
         double c=scanner.nextDouble();
-        double[] soluzioni = conversione.calcolaSoluzioniEquazioneSecondoGrado(a, b, c);
-        if(soluzioni==null){
-            System.out.println("a minore di zero impossibile eseguire i calcoli");
-        }else if (!Double.isNaN(soluzioni[0])) {
-            if (soluzioni[0] == soluzioni[1]) {
-                System.out.println("L'equazione ha una sola soluzione: " + soluzioni[0]);
+        try{
+            double[] soluzioni = conversione.calcolaSoluzioniEquazioneSecondoGrado(a, b, c);
+            if(soluzioni==null){
+                System.out.println("a minore di zero impossibile eseguire i calcoli");
+            }else if (!Double.isNaN(soluzioni[0])) {
+                if (soluzioni[0] == soluzioni[1]) {
+                    System.out.println("L'equazione ha una sola soluzione: " + soluzioni[0]);
+                } else {
+                    System.out.println("Le soluzioni dell'equazione sono: " + soluzioni[0] + " e " + soluzioni[1]);
+                }
             } else {
-                System.out.println("Le soluzioni dell'equazione sono: " + soluzioni[0] + " e " + soluzioni[1]);
+                System.out.println("L'equazione non ha soluzioni reali.");
             }
-        } else {
-            System.out.println("L'equazione non ha soluzioni reali.");
+        }catch(ArithmeticException e) {
+            System.out.println("coefficienti troppo grandi!!");
         }
 
     }

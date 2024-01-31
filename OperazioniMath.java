@@ -52,6 +52,9 @@ public class OperazioniMath {
         if (a==0){
             return null;
         }
+        if (a>1000000000||b>1000000000||c>1000000000||a<-1000000000||b<-1000000000||c<-1000000000){
+            throw new ArithmeticException();
+        }
         double delta = b * b - 4 * a * c;
 
 
