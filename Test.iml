@@ -21,7 +21,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../jqwik-api-1.8.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/Dipendenze Intellij Libreria/jqwik-api-1.8.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -30,7 +30,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../jqwik-engine-1.8.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/Dipendenze Intellij Libreria/jqwik-engine-1.8.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -39,7 +39,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../junit-platform-commons-1.10.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/Dipendenze Intellij Libreria/junit-platform-commons-1.10.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -48,7 +48,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../junit-platform-engine-1.10.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/Dipendenze Intellij Libreria/junit-platform-engine-1.10.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -57,7 +57,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../opentest4j-1.3.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/Dipendenze Intellij Libreria/opentest4j-1.3.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
