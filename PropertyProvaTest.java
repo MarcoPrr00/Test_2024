@@ -3,7 +3,6 @@ import net.jqwik.api.constraints.DoubleRange;
 import net.jqwik.api.constraints.IntRange;
 import net.jqwik.api.constraints.Positive;
 
-import static org.assertj.core.api.Assumptions.assumeThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -134,7 +133,7 @@ public class PropertyProvaTest {
         assertThat(soluzioni).doesNotHaveDuplicates(); //se il delta è positivo sono due soluzioni e saranno due valori differenti
 
     }
-/*
+
     @Property
     void soluzioniEquazioneSecondoGradoDeltaUgualeAZero(
             @ForAll @DoubleRange(min = -1000000000, max = 1000000000) double a,
@@ -142,14 +141,21 @@ public class PropertyProvaTest {
             @ForAll @DoubleRange(min = -1000000000, max = 1000000000) double c
     ) {
         // Assicura che il delta è uguale a zero
-        assumeThat(a != 0 && b * b - 4 * a * c == 0);
 
-        OperazioniMath operazioniMath = new OperazioniMath();
-        double[] soluzioni = operazioniMath.calcolaSoluzioniEquazioneSecondoGrado(a, b, c);
-        assertThat(soluzioni[0]==soluzioni[1]).isTrue();
+        Assume.that(a != 0);
+
+        if (isValidInput(a, b, c)) {
+            double[] soluzioni = operazioniMath.calcolaSoluzioniEquazioneSecondoGrado(a, b, c);
+            assertThat(soluzioni[0]).isEqualTo(soluzioni[1]);
+        }
         // se il delta è uguale a zero sono due soluzioni con valore uguale
     }
-*/
+
+    private boolean isValidInput(double a, double b, double c) {
+        double delta = b * b - 4 * a * c;
+        return delta == 0;
+    }
+
 
 }
 
