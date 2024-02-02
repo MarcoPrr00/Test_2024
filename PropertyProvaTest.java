@@ -3,11 +3,15 @@ import net.jqwik.api.constraints.DoubleRange;
 import net.jqwik.api.constraints.IntRange;
 import net.jqwik.api.constraints.Positive;
 
+import static org.assertj.core.api.Assumptions.assumeThat;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 public class PropertyProvaTest {
     OperazioniMath operazioniMath = new OperazioniMath();
 
+    //TEST CONVERTIBASE()
     @Provide
     Arbitrary<Integer> baseDestinazione() {
         return Arbitraries.of(2, 8, 16);
@@ -57,8 +61,16 @@ public class PropertyProvaTest {
         assertEquals("",risultato);
     }
 
+    @Property
+    void conversioneBaseNonSupportata(@ForAll int numeroDecimale,@ForAll int baseDestinazione) {
+        // Assicura quando viene passato una base non supportata verga restituito il messaggio di errore
 
+        Assume.that(baseDestinazione != 2 && baseDestinazione != 8 && baseDestinazione != 16);
+        String risultato = operazioniMath.convertiBase(numeroDecimale, baseDestinazione);
+        assertEquals("Base di destinazione non supportata",risultato);
+    }
 
+    //TEST SOLUZIONIEQUAZIONESECONDOGRADO()
 
     @Property
     void soluzioniEquazioneSecondoGradoConAZeroRestituisconoNull(
@@ -80,7 +92,7 @@ public class PropertyProvaTest {
 
     @Property
     void soluzioniEquazioneSecondoGradoCoefficientiOltreLeSoglie(@ForAll double a, @ForAll double b, @ForAll double c) {
-        // Assicura che le soluzioni siano NaN quando il delta è negativo
+        // Assicura che venga lanciata un eccezione quando a o b o c superano le sogli minime o massime consentite
 
         double sogliaMax = 1000000000;
         double sogliaMin = -1000000000;
@@ -95,26 +107,49 @@ public class PropertyProvaTest {
 
     }
 
+
     @Property
-    void soluzioniEquazioneSecondoGradoDeltaNegativoRestituisconoNaN(@ForAll double a, @ForAll double b, @ForAll double c) {
+    void soluzioniEquazioneSecondoGradoDeltaNegativoRestituisconoNaN(
+            @ForAll @DoubleRange(min = -1000000000, max = 1000000000) double a,
+            @ForAll @DoubleRange(min = -1000000000, max = 1000000000) double b,
+            @ForAll @DoubleRange(min = -1000000000, max = 1000000000) double c
+    ) {
         // Assicura che le soluzioni siano NaN quando il delta è negativo
-
-
-        /*
-        double sogliaMax = 1000000000;
-        double sogliaMin = -1000000000;
-        Assume.that(a<sogliaMax && a>sogliaMin);
-        Assume.that(b<sogliaMax && b>sogliaMin);
-        Assume.that(c<sogliaMax && c>sogliaMin);*/ //supera i limiti e lancia l'eccezzione artitmetica
-        try {
-            Assume.that(a != 0);
-            Assume.that(b * b - 4 * a * c < 0);
-            double[] soluzioni = operazioniMath.calcolaSoluzioniEquazioneSecondoGrado(a, b, c);
-            assertArrayEquals(new double[]{Double.NaN, Double.NaN}, soluzioni);
-        }catch (ArithmeticException e){
-            
-        }
+        Assume.that(a != 0);
+        Assume.that(b * b - 4 * a * c < 0);
+        OperazioniMath operazioniMath = new OperazioniMath();
+        double[] soluzioni = operazioniMath.calcolaSoluzioniEquazioneSecondoGrado(a, b, c);
+        assertArrayEquals(new double[]{Double.NaN, Double.NaN}, soluzioni);
     }
-    
+
+    @Property
+    void soluzioniEquazioneSecondoGradoDeltaPositivo( @ForAll @DoubleRange(min = -1000000000, max = 1000000000) double a,
+                                                      @ForAll @DoubleRange(min = -1000000000, max = 1000000000) double b,
+                                                      @ForAll @DoubleRange(min = -1000000000, max = 1000000000) double c) {
+        // Assicura che le soluzioni siano differenti con il delta positivo
+
+        Assume.that(a != 0);
+        Assume.that(b * b - 4 * a * c > 0);
+        double[] soluzioni = operazioniMath.calcolaSoluzioniEquazioneSecondoGrado(a, b, c);
+        assertThat(soluzioni).doesNotHaveDuplicates(); //se il delta è positivo sono due soluzioni e saranno due valori differenti
+
+    }
+/*
+    @Property
+    void soluzioniEquazioneSecondoGradoDeltaUgualeAZero(
+            @ForAll @DoubleRange(min = -1000000000, max = 1000000000) double a,
+            @ForAll @DoubleRange(min = -1000000000, max = 1000000000) double b,
+            @ForAll @DoubleRange(min = -1000000000, max = 1000000000) double c
+    ) {
+        // Assicura che il delta è uguale a zero
+        assumeThat(a != 0 && b * b - 4 * a * c == 0);
+
+        OperazioniMath operazioniMath = new OperazioniMath();
+        double[] soluzioni = operazioniMath.calcolaSoluzioniEquazioneSecondoGrado(a, b, c);
+        assertThat(soluzioni[0]==soluzioni[1]).isTrue();
+        // se il delta è uguale a zero sono due soluzioni con valore uguale
+    }
+*/
+
 }
 
