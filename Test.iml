@@ -63,5 +63,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="net.jqwik" level="project" />
   </component>
 </module>

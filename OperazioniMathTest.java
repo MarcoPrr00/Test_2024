@@ -107,8 +107,8 @@ class OperazioniMathTest {
     public void testCoefficientiSuperioriInferioriSogliaMaxSogliaMin()
     {
         assertThrows(ArithmeticException.class,() ->{
-            operazioniMath.calcolaSoluzioniEquazioneSecondoGrado(-1000000001,1000000001,1000000001);
-        });
+        operazioniMath.calcolaSoluzioniEquazioneSecondoGrado(-1000000001,1000000001,1000000001);
+    });
     }
 
 }
