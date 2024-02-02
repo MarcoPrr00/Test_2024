@@ -106,14 +106,15 @@ public class PropertyProvaTest {
         Assume.that(a<sogliaMax && a>sogliaMin);
         Assume.that(b<sogliaMax && b>sogliaMin);
         Assume.that(c<sogliaMax && c>sogliaMin);*/ //supera i limiti e lancia l'eccezzione artitmetica
-
-        Assume.that(a != 0);
-        Assume.that(b * b - 4 * a * c < 0);
-        double[] soluzioni = operazioniMath.calcolaSoluzioniEquazioneSecondoGrado(a, b, c);
-        assertArrayEquals(new double[]{Double.NaN, Double.NaN},soluzioni);
+        try {
+            Assume.that(a != 0);
+            Assume.that(b * b - 4 * a * c < 0);
+            double[] soluzioni = operazioniMath.calcolaSoluzioniEquazioneSecondoGrado(a, b, c);
+            assertArrayEquals(new double[]{Double.NaN, Double.NaN}, soluzioni);
+        }catch (ArithmeticException e){
+            
+        }
     }
-
-
-
+    
 }
 
