@@ -17,7 +17,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="junit.jupiter" level="project" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -63,7 +62,8 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="net.jqwik" level="project" />
-    <orderEntry type="library" name="assertj.core" level="project" />
+    <orderEntry type="library" name="assertj.core1" level="project" />
+    <orderEntry type="library" name="junit.jupiter1" level="project" />
+    <orderEntry type="library" name="net.jqwik1" level="project" />
   </component>
 </module>
